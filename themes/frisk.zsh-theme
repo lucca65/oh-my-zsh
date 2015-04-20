@@ -1,5 +1,14 @@
-PROMPT=$'
-%{$fg[blue]%}%/%{$reset_color%} $(git_prompt_info)$(bzr_prompt_info)%{$fg[white]%}[%n@%m]%{$reset_color%} %{$fg[white]%}[%T]%{$reset_color%}
+# Helper functions
+
+function box_name {
+  [ -f ~/.box-name ] && cat ~/.box-name || echo $SHORT_HOST || echo $HOST
+}
+
+# Shell configuration
+
+# $(bzr_prompt_info)%{$fg[white]%}[%n@%m]%{$reset_color%}
+
+PROMPT=$'%{$fg[blue]%}%/%{$reset_color%} $(git_prompt_info) %{$FG[040]%}%n%{$reset_color%}%{$FG[239]%}@%{$reset_color%}%{$FG[033]%}$(box_name)%{$reset_color%}
 %{$fg_bold[black]%}>%{$reset_color%} '
 
 PROMPT2="%{$fg_blod[black]%}%_> %{$reset_color%}"
